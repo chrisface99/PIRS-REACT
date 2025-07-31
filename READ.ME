@@ -1,0 +1,247 @@
+# PIRS React Application
+
+## 🚀 Overview
+
+This is a React conversion of the Airport Flight Information System (PIRS) originally written in vanilla JavaScript. The application displays real-time flight departure and arrival information with weather data and a configurable ticker.
+
+## 📁 Project Structure
+
+```
+PIRS-REACT/
+├── extension/                 # VXT Extension Files
+│   ├── index.js              # Extension logic & VXT communication
+│   └── manifest.json         # Extension configuration
+└── widget/                   # React Widget Application
+    ├── public/
+    │   └── index.html        # HTML template
+    ├── src/
+    │   ├── components/       # React Components
+    │   │   ├── AirportApp.jsx    # Main application component
+    │   │   ├── Header.jsx        # Header with clock/weather
+    │   │   ├── FlightTable.jsx   # Flight data table
+    │   │   └── Ticker.jsx        # Scrolling ticker
+    │   ├── services/         # API Services & Utilities
+    │   │   ├── config.js         # Configuration constants
+    │   │   ├── FlightService.js  # Flight data API
+    │   │   ├── WeatherService.js # Weather API
+    │   │   └── utils.js          # Utility functions
+    │   ├── fonts/            # Samsung Font Files
+    │   ├── App.js            # Main App component
+    │   ├── App.css           # Application styles
+    │   └── index.js          # React entry point
+    ├── scripts/
+    │   └── build-pirs.js     # Custom build script
+    ├── package.json          # Dependencies & scripts
+    └── manifest.json         # Widget manifest
+```
+
+## 🛠️ Setup Instructions
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- Aviationstack API key
+- Samsung font files (optional, for proper styling)
+
+### Installation
+
+1. **Clone or download the project**
+   ```bash
+   cd PIRS-REACT
+   ```
+
+2. **Run the setup script**
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
+
+3. **Navigate to widget directory**
+   ```bash
+   cd widget
+   ```
+
+4. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+5. **Add Samsung fonts** (optional but recommended)
+   - Copy Samsung font files to `src/fonts/`:
+     - `SamsungSharpSans-Regular.ttf`
+     - `SamsungSharpSans-Medium.ttf`
+     - `SamsungSharpSans-Bold.ttf`
+
+## 🔧 Configuration
+
+### API Keys
+Update the configuration in `src/services/config.js`:
+
+```javascript
+export const CONFIG = {
+  AVIATIONSTACK_API_KEY: "your-api-key-here",
+  OPENWEATHER_API_KEY: "your-weather-api-key", // Optional
+  // ... other config
+};
+```
+
+### Airport Codes
+Add or modify airport codes in the `IATA_TO_CITY_MAPPING` object in `config.js`.
+
+## 🚀 Development
+
+### Start Development Server
+```bash
+cd widget
+npm start
+```
+
+The application will open at `http://localhost:3000`
+
+### Build for Production
+```bash
+npm run build
+```
+
+This creates a `build/` directory ready for deployment.
+
+### Custom Build Script
+```bash
+npm run build-pirs
+```
+
+Uses the custom build script with additional validation and summary.
+
+## 🔄 VXT Integration
+
+The application communicates with the VXT extension through `window.postMessage`. The extension (`extension/index.js`) handles:
+
+- Configuration updates from VXT interface
+- API token management
+- Airport code selection
+- Template switching (main/departures/arrivals)
+
+### Message Types
+- `VXT_AIRPORT_UPDATE`: Airport code changes
+- `VXT_TOKEN_UPDATE`: API token updates  
+- `VXT_CONFIG_UPDATE`: Complete configuration updates
+
+## 🎛️ Features
+
+### Header Component
+- Real-time clock
+- Current date display
+- Weather information
+- Airport code display
+
+### Flight Tables
+- **Departures**: Upcoming departing flights
+- **Arrivals**: Incoming flights
+- Dynamic airline icons
+- Status indicators (On Time, Delayed, Cancelled, etc.)
+- Gate information
+
+### Ticker
+- Scrolling news ticker
+- Configurable direction and speed
+- Alternates between custom text and flight updates
+- Flight status announcements
+
+### Configuration Options
+- Number of rows displayed
+- Ticker text and behavior
+- Template selection (main/departures/arrivals only)
+- Refresh intervals
+
+## 🔧 Technical Details
+
+### State Management
+Uses React hooks (`useState`, `useEffect`) for:
+- Flight data caching
+- Real-time updates
+- Configuration management
+- VXT communication
+
+### API Services
+- **FlightService**: Aviationstack API integration
+- **WeatherService**: OpenWeatherMap API integration
+- Caching and rate limiting
+- Error handling
+
+### Styling
+- Responsive design with viewport units
+- Samsung font integration
+- Dark theme optimized for displays
+- CSS Grid and Flexbox layouts
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+1. **Fonts not loading**
+   - Ensure font files are in `src/fonts/`
+   - Check font file names match CSS imports
+
+2. **API errors**
+   - Verify API keys in `config.js`
+   - Check network connectivity
+   - Review browser console for errors
+
+3. **VXT communication issues**
+   - Ensure extension files are properly configured
+   - Check browser console for message errors
+   - Verify VXT API is loaded
+
+### Debug Mode
+Enable additional logging by adding to `config.js`:
+```javascript
+export const DEBUG = true;
+```
+
+## 📦 Build Output
+
+After running `npm run build`, the `build/` directory contains:
+- `index.html` - Main HTML file
+- `static/js/` - Bundled JavaScript
+- `static/css/` - Bundled CSS
+- `manifest.json` - Widget configuration
+- `build-info.json` - Build metadata
+
+## 🔄 Migration from Vanilla JS
+
+Key differences from the original vanilla JS version:
+
+1. **Component-based architecture** - Split into React components
+2. **Hook-based state management** - No more global variables
+3. **PostMessage communication** - Improved VXT integration
+4. **Modern build process** - Create React App tooling
+5. **Better error handling** - React error boundaries and try-catch
+6. **Improved performance** - React optimizations and caching
+
+## 📈 Performance Optimizations
+
+- API response caching
+- Debounced updates
+- Efficient re-rendering with React keys
+- Lazy loading of airline icons
+- Memory leak prevention with cleanup
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📜 License
+
+This project maintains the same license as the original vanilla JS version.
+
+## 🆘 Support
+
+For issues and questions:
+1. Check the troubleshooting section
+2. Review browser console errors
+3. Verify API configurations
+4. Check VXT extension setup

@@ -6,14 +6,19 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && npm run post-build",
-    "post-build": "cp manifest.json build/ && echo 'Build completed with manifest copied'",
+    "build-pirs": "node scripts/build-pirs.js",
+    "post-build": "cp manifest.json build/ && echo '✅ Build completed with manifest copied'",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "validate": "npm run validate-structure && npm run validate-config",
+    "validate-structure": "echo '🔍 Validating project structure...' && test -f src/App.js && test -f src/components/AirportApp.jsx && echo '✅ Structure validation passed'",
+    "validate-config": "echo '🔍 Validating configuration...' && node -e \"require('./src/services/config.js'); console.log('✅ Config validation passed')\""
   },
   "eslintConfig": {
     "extends": [
@@ -32,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "fs-extra": "^10.1.0"
   }
 }
