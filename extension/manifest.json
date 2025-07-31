@@ -1,0 +1,58 @@
+[
+  {
+    "type": "settings",
+    "id": "partial",
+    "displayType": "appName",
+    "initialState": "always",
+    "save": "custom",
+    "reopen": "goBack"
+  },
+  {
+    "type": "message",
+    "id": "signIn",
+    "value": "Welcome to Flight Schedule PIRS",
+    "caption": "",
+    "size": "large",
+    "position": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  {
+    "type": "message",
+    "id": "dropdownCaption",
+    "value": "Please select your Airport code, which you want to show on the screen from the List:"
+  },
+  {
+    "type": "dropdown",
+    "id": "iataCodeCity",
+    "caption": "Airpots Code",
+    "list": ["WAW", "BCN", "BER", "KE", "DEL"],
+    "value": "WAW"
+  },
+  {
+    "type": "text",
+    "id": "Token",
+    "caption": "Please input your Aviationstack API Token",
+    "value": "token",
+    "charactersLimit": 60,
+    "label": "Aviationstack API Token"
+  },
+  {
+    "type": "message",
+    "id": "signInDescription",
+    "value": "To access the Flight Schedule PIRS, please click the 'Select' button.",
+    "caption": ""
+  },
+  {
+    "type": "action",
+    "id": "submitForm",
+    "caption": "Select",
+    "action": "dispatchConfig",
+    "size": "large",
+    "position": {
+      "x": -8,
+      "y": -8
+    }
+  }
+]
