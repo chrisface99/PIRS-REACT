@@ -1,4 +1,3 @@
-// widget/src/services/utils.js
 import { IATA_CITY_MAPPING } from "./config.js";
 
 export function getCityNameFromIATA(iata) {

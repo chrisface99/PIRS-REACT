@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "./static/css/main.4c0b4eda.css",
+    "main.js": "./static/js/main.0d902454.js",
+    "static/media/SamsungSharpSans-Bold.ttf": "./static/media/SamsungSharpSans-Bold.8da68056f0761296f7c2.ttf",
+    "static/media/SamsungSharpSans-Medium.ttf": "./static/media/SamsungSharpSans-Medium.600a12523641ab003447.ttf",
+    "static/media/SamsungSharpSans-Regular.ttf": "./static/media/SamsungSharpSans-Regular.9df55f23783ac98d65a3.ttf",
+    "index.html": "./index.html",
+    "main.4c0b4eda.css.map": "./static/css/main.4c0b4eda.css.map",
+    "main.0d902454.js.map": "./static/js/main.0d902454.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4c0b4eda.css",
+    "static/js/main.0d902454.js"
+  ]
+}
